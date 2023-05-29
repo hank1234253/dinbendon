@@ -25,7 +25,7 @@ $class=$pdo->query("select `class` from `member` where `acc`='{$_SESSION['login'
             <td><?=$row['pr']?></td>
             <td>
                 <button type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
-                <button type="button" onclick="location.href='?do=check&id=<?=$row['id']?>'">刪除</button>
+                <button type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>
             </td>
         </tr>
         <?php

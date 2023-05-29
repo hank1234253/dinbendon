@@ -16,7 +16,7 @@
             if($row['pr']!='super'){
         ?>
         <tr>
-            <form action="./api/edit.php" method="post">
+            <form action="./api/edit_member.php" method="post">
             <td><?=$row['name']?></td>
             <td><?=$row['acc']?></td>
             <td>
@@ -39,7 +39,7 @@
             <td>
                 <input type="hidden" name="id" value="<?=$row['id']?>">
                 <button type="submit">變更</button>
-                <button type="button" onclick="location.href='?do=check&id=<?=$row['id']?>'">刪除</button>
+                <button type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>
                 <button type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
             </td>
             </form>

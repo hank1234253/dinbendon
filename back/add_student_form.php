@@ -1,6 +1,6 @@
 <?php
 ?>
-<form action="./api/add.php" method="post">
+<form action="./api/add_member.php" method="post">
     <div>
         <label for="name">姓名:</label>
         <input type="text" name="name" id="name" required>

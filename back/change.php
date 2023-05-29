@@ -7,7 +7,7 @@
     <span>帳號:</span>
     <span><?=$row?></span>
 </div>
-<form action="./api/change.php" method="post">
+<form action="./api/change_member.php" method="post">
     <div>
     <label for="pw">更新密碼:</label>
     <input type="password" name="pw">

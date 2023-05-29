@@ -16,6 +16,6 @@
     <span><?=$row['pr']?></span>
 </div>
 <div>
-    <button type="button" onclick="location.href='./api/del.php?id=<?=$_GET['id']?>'">確定</button>
+    <button type="button" onclick="location.href='./api/del_member.php?id=<?=$_GET['id']?>'">確定</button>
     <button type="button" onclick="location.href='./backend.php'">取消</button>
 </div>
