@@ -10,7 +10,7 @@ include_once "db.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>訂便當</title>
 </head>
-
+<script src="./js/jquery-3.7.0.min.js"></script>
 <body>
     <header>
         <a href="./index.php">首頁</a>
