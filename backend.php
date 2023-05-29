@@ -21,6 +21,8 @@
     if(!empty($_SESSION['login'])){
         if($_SESSION['pr']=="super"){
             $do=$_GET['do']??"manage";
+        }else if($_SESSION['pr']=="teacher"){
+            $do=$_GET['do']??"manageClass";
         }else{
             $do="error.php";
         }
@@ -31,6 +33,8 @@
         }else{
             if($_SESSION['pr']=="super"){
                 include "./back/manage.php";
+            }else if($_SESSION['pr']=="teacher"){
+                include "./back/manageClass.php";
             }else{
                 include "./error.php";
             }

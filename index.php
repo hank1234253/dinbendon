@@ -18,7 +18,9 @@ include_once "db.php";
                 echo "<span>{$name}</span>";
                 echo "<a href='./api/logout.php'>登出</a>";
                 if($_SESSION['pr']=="super"){
-                    echo "<a href='./backend.php'>管理系統</a>";
+                    echo "<a href='./backend.php'>會員管理系統</a>";
+                }else if($_SESSION['pr']=="teacher"){
+                    echo "<a href='./backend.php'>班級管理系統</a>";
                 }
             }
         ?>

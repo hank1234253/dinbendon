@@ -15,26 +15,16 @@
     </div>
     <div>
         <label for="class">班級:</label>
-        <select name="class" id="class">
-            <?php
-            $classes = $pdo->query("select * from `class`")->fetchAll();
-            foreach ($classes as $class) {
-            ?>
-                <option value="<?= $class['name'] ?>"><?= $class['name'] ?></option>
-            <?php
-            }
-            ?>
-        </select>
+        <input type="hidden" name="class" value="<?=$_GET['class']?>" readonly>
+        <span><?=$_GET['class']?></span>
     </div>
     <div>
         <label for="pr">權限</label>
-        <select name="pr">
-            <option value="teacher">老師</option>
-            <option value="student">學生</option>
-        </select>
+        <input type="hidden" name="pr" id="pr" value="student" >
+        <span>學生</span>
     </div>
     <div>
-        <input type="hidden" name="type" value="0">
+    <input type="hidden" name="type" value="1">
         <input type="submit" value="新增">
         <button type="button" onclick="location.href='./backend.php'">取消</button>
     </div>
