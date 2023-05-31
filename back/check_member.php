@@ -1,6 +1,6 @@
 <h2>你確定要刪除以下帳號及資料?</h2>
 <?php
-    $sql="select * from `member` where id='{$_GET['id']}'";
+    $sql="select * from `members` where id='{$_GET['id']}'";
     $row=$pdo->query($sql)->fetch();
 ?>
 <div>

@@ -1,5 +1,5 @@
 <?php
-$class=$pdo->query("select `class` from `member` where `acc`='{$_SESSION['login']}'")->fetchColumn();
+$class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
 ?>
 <h1>班級管理系統</h1>
     <table>
@@ -12,7 +12,7 @@ $class=$pdo->query("select `class` from `member` where `acc`='{$_SESSION['login'
             <td>操作</td>
         </tr>
         <?php
-            $sql="select * from `member` where `class`='{$class}'";
+            $sql="select * from `members` where `class`='{$class}'";
             $rows=$pdo->query($sql)->fetchAll();
             foreach($rows as $row){
             if($row['pr']!='teacher'){

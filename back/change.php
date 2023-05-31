@@ -1,6 +1,6 @@
 <h2>修改密碼</h2>
 <?php
-    $sql="select `acc` from `member` where id='{$_GET['id']}'";
+    $sql="select `acc` from `members` where id='{$_GET['id']}'";
     $row=$pdo->query($sql)->fetchColumn();
 ?>
 <div>

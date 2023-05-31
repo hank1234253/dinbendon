@@ -9,9 +9,9 @@
             <td>操作</td>
         </tr>
         <?php
-            $sql="select * from `member`";
+            $sql="select * from `members`";
             $rows=$pdo->query($sql)->fetchAll();
-            $classes=$pdo->query("select `class` from `member` group by `class`")->fetchAll();
+            $classes=$pdo->query("select `class` from `members` group by `class`")->fetchAll();
             foreach($rows as $row){
             if($row['pr']!='super'){
         ?>

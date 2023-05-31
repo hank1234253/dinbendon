@@ -1,6 +1,6 @@
 <?php
     include "../db.php";
-    $sql="select count(*) from `member` where `acc`='{$_POST['acc']}'";
+    $sql="select count(*) from `members` where `acc`='{$_POST['acc']}'";
     $check=$pdo->query($sql)->fetchColumn();
     if($check>0){
         if($_POST['type']==0){
@@ -11,7 +11,7 @@
         exit();
         }
     }
-    $sql="insert into `member` (`name`,`acc`,`pw`,`class`,`pr`) values ('{$_POST['name']}','{$_POST['acc']}','{$_POST['pw']}','{$_POST['class']}','{$_POST['pr']}')";
+    $sql="insert into `members` (`name`,`acc`,`pw`,`class`,`pr`) values ('{$_POST['name']}','{$_POST['acc']}','{$_POST['pw']}','{$_POST['class']}','{$_POST['pr']}')";
     $pdo->exec($sql);
     header("location:../backend.php");
 ?>

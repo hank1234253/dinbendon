@@ -1,5 +1,9 @@
 <?php
 include_once "db.php";
+if(!empty($_SESSION['buy'])){  
+    echo "<script>alert('點餐成功')</script>";
+    unset($_SESSION['buy']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,7 @@ include_once "db.php";
         <a href="./index.php">首頁</a>
         <?php
         if (!empty($_SESSION['login'])) {
-            $name = $pdo->query("select `name` from `member` where `acc`='{$_SESSION['login']}'")->fetchColumn();
+            $name = $pdo->query("select `name` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
             echo "<span>{$name}</span>";
             echo "<a href='./api/logout.php'>登出</a>";
             if ($_SESSION['pr'] == "super") {
@@ -43,6 +47,7 @@ include_once "db.php";
         ?>
     </main>
     <footer></footer>
+    
 </body>
 
 </html>
