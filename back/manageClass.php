@@ -8,6 +8,7 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             <td>姓名</td>
             <td>帳號</td>
             <td>班級</td>
+            <td>座號</td>
             <td>權限</td>
             <td>操作</td>
         </tr>
@@ -21,7 +22,10 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             <td><?=$row['name']?></td>
             <td><?=$row['acc']?></td>
             <td><?=$row['class']?></td>
-            <td><?=$row['pr']?></td>
+            <td>
+                <input type="text" name="num" value="<?=$row['num']?>" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" require>
+            </td>
+            <td>學生</td>
             <td>
                 <button type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
                 <button type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>

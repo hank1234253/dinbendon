@@ -87,7 +87,7 @@ $row = $pdo->query($sql)->fetch();
     ?>
         <form action="./api/order.php" method="post">
             <tr>
-                <td><input type="hidden" name="id[]" class="store"  value="<?= $opt['id'] ?>" data-name="<?= $opt['name'] ?>"><?= $opt['name'] ?></td>
+                <td><input type="hidden" name="name[]" class="store"  value="<?= $opt['name'] ?>" data-name="<?= $opt['name'] ?>"><?= $opt['name'] ?></td>
                 <td class="dollar"><?= $opt['dollar'] ?></td>
                 <td><input type="number" name="number[]" class="number" min="0" onchange="sum()" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"></td>
                 <td><input type="text" name="remark[]" class="remark"></td>

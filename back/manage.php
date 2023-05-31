@@ -5,11 +5,12 @@
             <td>姓名</td>
             <td>帳號</td>
             <td>班級</td>
+            <td>座號</td>
             <td>權限</td>
             <td>操作</td>
         </tr>
         <?php
-            $sql="select * from `members`";
+            $sql="select * from `members` order by `class`,`num`";
             $rows=$pdo->query($sql)->fetchAll();
             $classes=$pdo->query("select `class` from `members` group by `class`")->fetchAll();
             foreach($rows as $row){
@@ -31,6 +32,9 @@
                 }
                 ?>
                 </select>
+            </td>
+            <td>
+                <input type="text" name="num" value="<?=$row['num']?>" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" require>
             </td>
             <td>
                 <select name="pr">

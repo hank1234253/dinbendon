@@ -22,6 +22,7 @@ if(!empty($_SESSION['buy'])){
         if (!empty($_SESSION['login'])) {
             $name = $pdo->query("select `name` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
             echo "<span>{$name}</span>";
+            echo "<a href='?do=order'>今日點餐</a>";
             echo "<a href='./api/logout.php'>登出</a>";
             if ($_SESSION['pr'] == "super") {
                 echo "<a href='./backend.php'>會員管理系統</a>";
