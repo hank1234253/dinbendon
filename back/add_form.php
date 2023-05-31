@@ -15,16 +15,7 @@
     </div>
     <div>
         <label for="class">班級:</label>
-        <select name="class" id="class">
-            <?php
-            $classes = $pdo->query("select * from `class`")->fetchAll();
-            foreach ($classes as $class) {
-            ?>
-                <option value="<?= $class['name'] ?>"><?= $class['name'] ?></option>
-            <?php
-            }
-            ?>
-        </select>
+        <input type="text" name="class" id="class">
     </div>
     <div>
         <label for="pr">權限</label>

@@ -14,7 +14,6 @@ $class=$pdo->query("select `class` from `member` where `acc`='{$_SESSION['login'
         <?php
             $sql="select * from `member` where `class`='{$class}'";
             $rows=$pdo->query($sql)->fetchAll();
-            $classes=$pdo->query("select * from `class`")->fetchAll();
             foreach($rows as $row){
             if($row['pr']!='teacher'){
         ?>

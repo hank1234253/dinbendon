@@ -11,7 +11,7 @@
         <?php
             $sql="select * from `member`";
             $rows=$pdo->query($sql)->fetchAll();
-            $classes=$pdo->query("select * from `class`")->fetchAll();
+            $classes=$pdo->query("select `class` from `member` group by `class`")->fetchAll();
             foreach($rows as $row){
             if($row['pr']!='super'){
         ?>
@@ -23,9 +23,11 @@
                 <select name="class">
                 <?php
                     foreach($classes as $class){
+                        if($class['class']!='0'){
                 ?>
-                    <option value="<?=$class['name']?>" <?php if($class['name']==$row['class'])echo "selected"?> ><?=$class['name']?></option>
+                    <option value="<?=$class['class']?>" <?php if($class['class']==$row['class'])echo "selected"?> ><?=$class['class']?></option>
                 <?php
+                }
                 }
                 ?>
                 </select>
