@@ -20,7 +20,7 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
         ?>
         <tr>
             <form action="./api/edit_member.php" method="post">
-            <td><?=$row['name']?></td>
+            <td><input type="text" name="name" value="<?=$row['name']?>" require></td>
             <td><?=$row['acc']?></td>
             <td><?=$row['class']?></td>
             <td>

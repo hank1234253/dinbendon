@@ -61,8 +61,9 @@ foreach ($options as $option) {
             <td><?= $value['num'] ?></td>
             <td>
                 <?php
-                foreach ($value as $name => $remark) {
-                    if ($name != "num") {
+                foreach ($value as $acc => $remark) {
+                    if ($acc != "num") {
+                        $name=$pdo->query("select `name` from `members` where `acc`='{$acc}'")->fetchColumn();
                         echo "<span><span>" . $name . "</span><span>" . $remark["num"] . "</span></span> ";
                     }
                 }

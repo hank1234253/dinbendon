@@ -1,15 +1,5 @@
 <?php
     include_once "../db.php";
-    dd($_FILES["img"]);
-    dd($_FILES["menu_img"]);
-    echo $_POST['name'];
-    echo "<br>";
-    echo $_POST['tel'];
-    echo "<br>";
-    echo $_POST['addr'];
-    echo "<br>";
-    dd($_POST['menu']);
-    dd($_POST['dollar']);
     $check=$pdo->query("select count(*) from `restaurant` where `name`='{$_POST['name']}'")->fetchColumn();
     if($check==0){
     $imgFile='';
