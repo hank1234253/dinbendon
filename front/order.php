@@ -8,7 +8,7 @@ $logs = $pdo->query($sql)->fetchAll();
 $options = [];
 foreach ($logs as $log) {
     $buy = unserialize($log['buy']);
-    $tmp = $log['name'];
+    $tmp = $log['acc'];
     foreach ($buy as $key => $value) {
         if (!empty($value[0])) {
             $tmp = $tmp . ',' . $key . ',' . $value[0] . ',' . $value[1];
@@ -51,7 +51,8 @@ foreach ($options as $option) {
             <td><?= $key ?></td>
             <td>
                 <?php
-                $sql = "select `dollar` from `options` where `name`='{$key}'&&`restaurant_id`='{$logs[0]["restaurant_id"]}'";
+                $restaurant_id=$pdo->query("select `id` from `restaurant` where `name`='{$logs[0]["restaurant"]}'")->fetchColumn();
+                $sql = "select `dollar` from `options` where `name`='{$key}'&&`restaurant_id`='{$restaurant_id}'";
                 $dollar = $pdo->query($sql)->fetchColumn();
                 echo $dollar;
                 $sum=$sum+$dollar*$value['num'];

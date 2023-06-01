@@ -5,9 +5,9 @@
     for($i=0;$i<count($_POST['name']);$i++){
         $buy[$_POST['name'][$i]]=[$_POST['number'][$i],$_POST['remark'][$i]];
     }
-
+    $restaurant=$pdo->query("select `name` from `restaurant` where `id`='{$_POST['restaurant_id']}'")->fetchColumn();
     $buy=serialize($buy);
-    $sql="insert into `logs` (`name`,`class`,`restaurant_id`,`buy`) values ('{$_SESSION['login']}',{$class},'{$_POST['restaurant_id']}','{$buy}')";
+    $sql="insert into `logs` (`acc`,`class`,`restaurant`,`buy`) values ('{$_SESSION['login']}',{$class},'{$restaurant}','{$buy}')";
     $pdo->exec($sql);
     $_SESSION['buy']='ok';
     header("location:../index.php"); 

@@ -19,6 +19,7 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             if($row['pr']!='teacher'){
         ?>
         <tr>
+            <form action="./api/edit_member.php" method="post">
             <td><?=$row['name']?></td>
             <td><?=$row['acc']?></td>
             <td><?=$row['class']?></td>
@@ -27,9 +28,12 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             </td>
             <td>學生</td>
             <td>
+                <input type="hidden" name="id" value="<?=$row['id']?>">
+                <button type="submit">變更</button>
                 <button type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
                 <button type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>
             </td>
+            </form>
         </tr>
         <?php
             }
