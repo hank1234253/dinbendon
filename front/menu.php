@@ -1,6 +1,7 @@
 <style>
-    *{
+    main{
         box-sizing: border-box;
+        text-align: center;
     }
     #check {
         display: none;
@@ -45,6 +46,35 @@
         left: 470px;
         bottom: 10px;
     }
+
+    .menu{
+        border: 1px solid #ccc;
+        padding: 30px;
+        margin: 0 auto;
+        border-radius: 1em;
+        box-shadow: 0 0 8px #ccc;
+    }
+    .menu td,th{
+        width: 230px;
+        text-align: left;
+    }
+    .menu th{
+        padding: 10px;
+        padding-left: 20px;
+        border-left: 15px solid seagreen;
+        border-bottom: 1px solid #ccc;
+        color:red;
+    }
+    .menu td{
+        padding: 15px;
+        padding-left: 50px;
+        border-bottom: 1px solid #ccc;
+    }
+    .menu td>input{
+        width: 200px;
+        height: 22px;
+    }
+
 </style>
 
 <?php
@@ -73,12 +103,12 @@ $row = $pdo->query($sql)->fetch();
     }
     ?>
 </div>
-<table>
+<table class="menu">
     <tr>
-        <td>品項</td>
-        <td>價格</td>
-        <td>數量</td>
-        <td>備註</td>
+        <th>品項</th>
+        <th>價格</th>
+        <th>數量</th>
+        <th>備註</th>
     </tr>
     <?php
     $sql = "select * from `options` where `restaurant_id`='{$_GET['id']}'";
