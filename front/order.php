@@ -1,4 +1,8 @@
-<h2>今日點餐</h2>
+<style>
+    table{
+        margin:0 auto;
+    }
+</style>
 <?php
 $lastday = date("Y-n-d", strtotime("-1 day", strtotime("now")));
 $nextday = date("Y-n-d", strtotime("+1 day", strtotime("now")));
@@ -36,6 +40,15 @@ foreach ($options as $option) {
     }
 }
 ?>
+<?php
+    if(!empty($log)){
+    $restaurant=$pdo->query("select * from `restaurant` where `name`='{$logs[0]['restaurant']}'")->fetch();
+?>
+<h2>今日點餐</h2>
+<p>餐廳名稱：<?=$restaurant['name']?></p>
+<p>餐廳地址：<?=$restaurant['addr']?></p>
+<p>餐廳電話：<?=$restaurant['tel']?></p>
+
 <table>
     <tr>
         <td>品項</td>
@@ -77,3 +90,8 @@ foreach ($options as $option) {
     <span>總計:</span>
     <span><?=$sum?></span>
     <span>元</span>
+<?php
+    }else{
+        echo "<h2>今日尚未選擇餐廳</h2>";
+    }
+?>

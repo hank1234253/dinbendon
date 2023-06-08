@@ -1,9 +1,64 @@
+<style>
+    table{
+        margin:0 auto;
+    }
+    td{
+        padding: 5px;
+    }
+    .new{
+            display: block;
+            background-color: skyblue;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            position: fixed;
+            top:73vh;
+            right: 3vw;
+            border-radius: 50px;
+            box-shadow: 0 0 10px #ccc;
+            transition: 0.2s;
+    }
+    .new:hover{
+        top:71vh;
+    }
+    .top{
+        display: block;
+            background-color: skyblue;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            position: fixed;
+            top:86vh;
+            right: 3vw;
+            border-radius: 50px;
+            box-shadow: 0 0 10px #ccc;
+            transition: 0.2s;
+    }
+    
+    .top:hover{
+        top:84vh
+    }
+    .box{
+        margin: 0 auto;
+        background-color: white;
+        width: 1000px;
+        border: 1px solid #ccc;
+        border-radius: 1em;
+        box-shadow: 0 0 8px #ccc;
+        padding: 30px;
+    }
+    a{
+        text-decoration: none;
+    }
+</style>
 <?php
 $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
 ?>
-<h1>班級管理系統</h1>
+<a class="new" href='?do=add_student_form&class=<?=$class?>'>新增學生</a>
+<a class="top" href="#">Top</a>
+<h1 class="mb-3">班級管理系統</h1>
+<div class="box">
     <table>
-        <button type="button" onclick="location.href='?do=add_student_form&class=<?=$class?>'">新增學生</button>
         <tr>
             <td>姓名</td>
             <td>帳號</td>
@@ -40,3 +95,4 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             }
         ?>
     </table>
+</div>

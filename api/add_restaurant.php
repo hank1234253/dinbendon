@@ -24,6 +24,7 @@
     $pdo->exec($sql);
     }else{
         header("location:../index.php?do=add_restaurant&error=1");
+        exit();
     }
     $id=$pdo->query("select `id` from `restaurant` where `name`='{$_POST['name']}'")->fetchColumn();
     foreach($_POST['menu'] as $idx => $menu){
