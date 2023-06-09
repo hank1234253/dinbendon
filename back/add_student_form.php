@@ -9,9 +9,10 @@
         padding: 30px;
     }
 </style>
-<h1>新增學生</h1>
 
 <div class="box">
+<h1 class="mb-3">新增學生</h1>
+
 <form action="./api/add_member.php" method="post">
     <div class="mb-2">
         <label for="name">姓名:</label>
@@ -37,8 +38,8 @@
     </div>
     <div>
     <input type="hidden" name="type" value="1">
-        <button type="submit">新增</button>
-        <button type="button" onclick="location.href='./backend.php'">取消</button>
+        <button class="btn btn-primary" type="submit">新增</button>
+        <button class="btn btn-secondary" type="button" onclick="location.href='./backend.php'">取消</button>
     </div>
     <div style="color:red">
         <?php

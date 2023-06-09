@@ -2,6 +2,11 @@
     table{
         margin:0 auto;
     }
+    th{
+        padding: 5px;
+        color:red;
+        text-align: left;
+    }
     td{
         padding: 5px;
     }
@@ -56,16 +61,17 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
 ?>
 <a class="new" href='?do=add_student_form&class=<?=$class?>'>新增學生</a>
 <a class="top" href="#">Top</a>
-<h1 class="mb-3">班級管理系統</h1>
 <div class="box">
+<h1 class="mb-3">班級管理系統</h1>
+
     <table>
         <tr>
-            <td>姓名</td>
-            <td>帳號</td>
-            <td>班級</td>
-            <td>座號</td>
-            <td>權限</td>
-            <td>操作</td>
+            <th>姓名</th>
+            <th>帳號</th>
+            <th>班級</th>
+            <th>座號</th>
+            <th>權限</th>
+            <th>操作</th>
         </tr>
         <?php
             $sql="select * from `members` where `class`='{$class}'";
@@ -84,9 +90,9 @@ $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login
             <td>學生</td>
             <td>
                 <input type="hidden" name="id" value="<?=$row['id']?>">
-                <button type="submit">變更</button>
-                <button type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
-                <button type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>
+                <button class="btn btn-primary" type="submit">變更</button>
+                <button class="btn btn-secondary" type="button" onclick="location.href='?do=change&id=<?=$row['id']?>'">修改密碼</button>
+                <button class="btn btn-danger" type="button" onclick="location.href='?do=check_member&id=<?=$row['id']?>'">刪除</button>
             </td>
             </form>
         </tr>

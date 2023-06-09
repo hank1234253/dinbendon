@@ -63,6 +63,7 @@
         border: 1px solid #ccc;
         border-radius: 1em;
         box-shadow: 0 0 8px #ccc;
+        padding: 30px;
     }
     form{
         margin: 0 auto;
@@ -70,7 +71,7 @@
 
     .del{
             display: block;
-            background-color: skyblue;
+            background-color: #dc3545;
             width: 100px;
             height: 100px;
             line-height: 100px;
@@ -80,7 +81,7 @@
             border-radius: 50px;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
-            color:#0d6efd;
+            color:white;
             border: 0;
     }
     .del:hover{
@@ -88,7 +89,7 @@
     }
     
 </style>
-<h2>編輯餐廳</h2>
+<h2 class="mb-3">編輯餐廳</h2>
 <button class='del' type="button" onclick="del(<?=$_GET['id']?>);"  >刪除餐廳</button>
 <?php
 if (!empty($_GET['error'])) {
@@ -165,7 +166,7 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
                 <td><input type="text" name="menu[]" value="<?=$options[0]['name']??''?>" required></td>
                 <td><input type="number" name="dollar[]" class="dollar" min="0" value="<?=$options[0]['dollar']??''?>" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
                 <td>
-                    <button type="button" onclick="addDiv()">+</button>
+                    <button class="btn btn-primary" type="button" onclick="addDiv()">+</button>
                 </td>
             </tr>
             <?php
@@ -178,8 +179,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
                 <td><input type="text" name="menu[]" value="<?=$option['name']?>" required></td>
                 <td><input type="number" name="dollar[]" class="dollar" value="<?=$option['dollar']?>" min="0" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
                 <td>
-                    <button type="button" onclick="addDiv()">+</button>
-                    <button type="button" onclick="delDiv(this)">-</button>
+                    <button class="btn btn-primary" type="button" onclick="addDiv()">+</button>
+                    <button class="btn btn-danger" type="button" onclick="delDiv(this)">-</button>
                 </td>
             </tr>
             <?php
@@ -189,8 +190,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
     </div>
     <div class="mt-3">
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
-        <button type="submit">編輯</button>
-        <button type="button" onclick="location.href='./index.php'">取消</button>
+        <button class="btn btn-primary" type="submit">編輯</button>
+        <button class="btn btn-secondary" type="button" onclick="location.href='./index.php'">取消</button>
     </div>
     <div id="space" data-img="<?php 
     if(file_exists("./img/{$restaurant['img']}")&&!empty($restaurant['img'])){
@@ -217,8 +218,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
                 <td><input type="text" name="menu[]" required></td>
                 <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\\d]+/g,'')" required></td>
                 <td>
-                    <button type="button" onclick="addDiv()">+</button>
-                    <button type="button" onclick="delDiv(this)">-</button>
+                    <button class="btn btn-primary" type="button" onclick="addDiv()">+</button>
+                    <button class="btn btn-danger" type="button" onclick="delDiv(this)">-</button>
                 </td>
             </tr>`;
         $(".menu").append(str);
@@ -270,7 +271,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
     let name=document.getElementById("name").value;
     function del(id){
         if(confirm(`你確定要刪除以下餐廳?
-        ${name}`)){
+
+                                                ${name}`)){
             location.href=`./api/del_restaurant.php?id=${id}`;
         }
     }

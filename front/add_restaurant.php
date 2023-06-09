@@ -130,14 +130,14 @@ if (!empty($_GET['error'])) {
                 <td><input type="text" name="menu[]" required></td>
                 <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
                 <td>
-                    <button type="button" onclick="addDiv()">+</button>
+                    <button class="btn btn-primary" type="button" onclick="addDiv()">+</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="mt-3">
-        <button type="submit">新增</button>
-        <button type="button" onclick="location.href='./index.php'">取消</button>
+        <button class="btn btn-primary" type="submit">新增</button>
+        <button class="btn btn-secondary" type="button" onclick="location.href='./index.php'">取消</button>
     </div>
     <div id="space">
 
@@ -149,8 +149,8 @@ if (!empty($_GET['error'])) {
                 <td><input type="text" name="menu[]" required></td>
                 <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\\d]+/g,'')" required></td>
                 <td>
-                    <button type="button" onclick="addDiv()">+</button>
-                    <button type="button" onclick="delDiv(this)">-</button>
+                    <button class="btn btn-primary" type="button" onclick="addDiv()">+</button>
+                    <button class="btn btn-danger" type="button" onclick="delDiv(this)">-</button>
                 </td>
             </tr>`;
         $(".menu").append(str);

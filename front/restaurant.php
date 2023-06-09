@@ -35,6 +35,7 @@
             border-radius: 50px;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
+            color: #0d6efd;
     }
     .new:hover{
         top:71vh;
@@ -57,6 +58,13 @@
     .top:hover{
         top:84vh
     }
+    button{
+        border: 0;
+    }
+    .cancel{
+        color:white;
+        background-color: #dc3545;
+    }
 </style>
 <?php
 $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
@@ -68,8 +76,8 @@ $logs=$pdo->query($sql)->fetchAll();
 
 if(empty($logs)){
     $sql = "select * from `restaurant`";
-    echo "<a class='new' href='?do=add_restaurant'>新增餐廳</a>";
-    echo "<a class='top' href='#'>Top</a>";
+    echo "<a type='button' class='new' href='?do=add_restaurant'>新增餐廳</a>";
+    echo "<button type='button' class='top' href='#'>Top</button>";
     echo "<h1 class='mb-5'>餐廳</h1>";
 }else{
     $sql="select * from `restaurant` where `name`='{$logs[0]['restaurant']}'";
@@ -77,7 +85,7 @@ if(empty($logs)){
     $check="select * from `logs` where `create_time`>'{$lastday}' && `create_time`<'{$nextday}'&&`acc`='{$_SESSION['login']}'";
     $log=$pdo->query($check)->fetch();
     if(!empty($log)){
-    echo  "<div class='top' onclick='cancel()'>取消訂餐</div>";
+    echo  "<button type='button' class='top cancel' onclick='cancel()'>取消訂餐</button>";
     }
 }
 $rows = $pdo->query($sql)->fetchAll(2);

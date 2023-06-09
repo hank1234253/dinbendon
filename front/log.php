@@ -14,6 +14,31 @@
         box-shadow: 0 0 8px #ccc;
         padding: 30px;
     }
+    .menu{
+        
+        padding: 30px;
+        margin: 0 auto;
+        background-color: white;
+    }
+    .menu td,th{
+        width: 230px;
+        text-align: left;
+    }
+    .menu th{
+        padding: 10px;
+        padding-left: 50px;
+        border-bottom: 1px solid #ccc;
+        color:red;
+    }
+    .menu td{
+        padding: 15px;
+        padding-left: 50px;
+        border-top: 1px solid #ccc;
+    }
+    a{
+        display: block;
+        font-size: 18px;
+    }
 </style>
 <?php
 if (empty($_GET['id'])) {
@@ -86,12 +111,7 @@ if (empty($_GET['id'])) {
     $sql = "select * from `logs` where `id`='{$_GET['id']}'";
     $log = $pdo->query($sql)->fetch();
     $buy=unserialize($log['buy']);
-    $tmp="";
-    foreach($buy as $name =>$value){
-        if(!empty($value[0])){
-            $tmp=$tmp.$name." ".$value[0]."份 ".$value[1]."<br>";
-        }
-    }
+
 ?>
     <h1>點餐紀錄</h1>
     <div class="box">
@@ -130,7 +150,30 @@ if (empty($_GET['id'])) {
      ?>
 </p>
 <p>餐廳名稱：<?=$log['restaurant']?></p>
-<p>餐點：<?=$tmp?></p>
+<table class="menu mb-3">
+    <tr>
+        <th>品項</th>
+        <th>數量</th>
+        <th>備註</th>
+    </tr>
+    <?php
+    
+    foreach ($buy as $name =>$value) {
+        if(!empty($value[0])){
+
+        
+    ?>
+        
+            <tr>
+                <td><?=$name?></td>
+                <td><?=$value[0]?></td>
+                <td><?=$value[1]?></td>
+            </tr>
+    <?php
+        }
+    }
+    ?>
+</table>
 <button type="button" onclick="location.href='?do=log'">回前頁</button>
 <?php
 }

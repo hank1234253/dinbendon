@@ -30,6 +30,10 @@
         .hei{
             height: 10vh;
         }
+        .dropdown-menu[data-bs-popper]{
+            top:6.5vh;
+            left: -30px;
+        }
     </style>
 </head>
 <body>

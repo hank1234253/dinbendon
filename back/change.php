@@ -9,12 +9,12 @@
         padding: 30px;
     }
 </style>
-<h2>修改密碼</h2>
 <?php
     $sql="select `acc` from `members` where id='{$_GET['id']}'";
     $row=$pdo->query($sql)->fetchColumn();
 ?>
 <div class="box">
+<h2 class="mb-3">修改密碼</h2>
 <div class="mb-3">
     <span>帳號:</span>
     <span><?=$row?></span>
@@ -26,8 +26,9 @@
     </div>
     <div>
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
-    <button type="submit">更新</button>
-    <button type="button" onclick="location.href='./backend.php'">取消</button>
+    <button class="btn btn-primary" type="submit">更新</button>
+    <button class="btn btn-secondary" type="button" onclick="location.href='./backend.php'">取消</button>
     </div>
+    
 </form>
 </div>

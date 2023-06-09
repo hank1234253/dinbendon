@@ -4,6 +4,10 @@ if (!empty($_SESSION['buy'])) {
     echo "<script>alert('點餐成功')</script>";
     unset($_SESSION['buy']);
 }
+if (!empty($_SESSION['cancel'])) {
+    echo "<script>alert('已取消訂餐')</script>";
+    unset($_SESSION['cancel']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +43,10 @@ if (!empty($_SESSION['buy'])) {
         
         .hei{
             height: 10vh;
+        }
+        .dropdown-menu[data-bs-popper]{
+            top:6.5vh;
+            left: -30px;
         }
     </style>
 </head>
