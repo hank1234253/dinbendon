@@ -20,7 +20,7 @@
         text-decoration: none;
     }
     .card{
-            height: 40vh;
+            height: 35vh;
             box-shadow: 0 0 5px #ccc;
         }
     .new{
@@ -40,7 +40,7 @@
         top:71vh;
     }
     .top{
-        display: block;
+            display: block;
             background-color: skyblue;
             width: 100px;
             height: 100px;
@@ -51,6 +51,7 @@
             border-radius: 50px;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
+            color:#0d6efd;
     }
     
     .top:hover{
@@ -69,14 +70,19 @@ if(empty($logs)){
     $sql = "select * from `restaurant`";
     echo "<a class='new' href='?do=add_restaurant'>新增餐廳</a>";
     echo "<a class='top' href='#'>Top</a>";
+    echo "<h1 class='mb-5'>餐廳</h1>";
 }else{
     $sql="select * from `restaurant` where `name`='{$logs[0]['restaurant']}'";
     echo "<h1>今日餐廳</h1>";
+    $check="select * from `logs` where `create_time`>'{$lastday}' && `create_time`<'{$nextday}'&&`acc`='{$_SESSION['login']}'";
+    $log=$pdo->query($check)->fetch();
+    if(!empty($log)){
+    echo  "<div class='top' onclick='cancel()'>取消訂餐</div>";
+    }
 }
 $rows = $pdo->query($sql)->fetchAll(2);
 ?>
 
-<h1 class="mb-5">餐廳</h1>
 
 <div class="container">
     <div class="row">
@@ -105,3 +111,10 @@ $rows = $pdo->query($sql)->fetchAll(2);
     </div>
     
 </div>
+<script>
+    function cancel(){
+        if(confirm("你確定要取消今日訂餐?")){
+            location.href="./api/cancel.php";
+        }
+    }
+</script>

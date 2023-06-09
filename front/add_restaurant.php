@@ -63,6 +63,7 @@
         border: 1px solid #ccc;
         border-radius: 1em;
         box-shadow: 0 0 8px #ccc;
+        padding: 30px;
     }
     form{
         margin: 0 auto;
@@ -72,7 +73,11 @@
 <h2>新增餐廳</h2>
 <?php
 if (!empty($_GET['error'])) {
-    echo "<span style='color:red'>已有相同餐廳</span>";
+    if($_GET['error']==1){
+    echo "<h3 style='color:red'>已有相同餐廳名稱</h3>";
+    }else{
+    echo "<h3 style='color:red'>有重複的菜單項目</h3>";
+    }
 }
 ?>
 <form action="./api/add_restaurant.php" method="post" enctype="multipart/form-data">
@@ -87,8 +92,9 @@ if (!empty($_GET['error'])) {
             <button type="button" id="delBtn" onclick="delImg('img_file','img',this)">刪除圖片</button>
         </div>
         <div>
-            <label for="name">餐廳名字</label>
+            <label for="name">餐廳名稱</label>
             <input type="text" name="name" id="name" required>
+            
         </div>
         <div>
             <label for="tel">餐廳電話</label>
@@ -100,8 +106,7 @@ if (!empty($_GET['error'])) {
         </div>
     </div>
     </div>
-    <hr>
-    <div class="restaurant mb-5">
+    <div class="restaurant mt-5 mb-5">
     <div class="mt-3">
         <img id="menu_img" src="./img/unknow.jpg" alt="">
     </div>
@@ -142,7 +147,7 @@ if (!empty($_GET['error'])) {
     function addDiv() {
         let str = `<tr>
                 <td><input type="text" name="menu[]" required></td>
-                <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
+                <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\\d]+/g,'')" required></td>
                 <td>
                     <button type="button" onclick="addDiv()">+</button>
                     <button type="button" onclick="delDiv(this)">-</button>

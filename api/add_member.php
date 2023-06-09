@@ -1,5 +1,6 @@
 <?php
 include "../db.php";
+
 $sql = "select count(*) from `members` where `acc`='{$_POST['acc']}'";
 $check = $pdo->query($sql)->fetchColumn();
 if ($check > 0) {

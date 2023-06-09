@@ -67,13 +67,38 @@
     form{
         margin: 0 auto;
     }
+
+    .del{
+            display: block;
+            background-color: skyblue;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            position: fixed;
+            top:86vh;
+            right: 3vw;
+            border-radius: 50px;
+            box-shadow: 0 0 10px #ccc;
+            transition: 0.2s;
+            color:#0d6efd;
+            border: 0;
+    }
+    .del:hover{
+        top:84vh;
+    }
     
 </style>
 <h2>編輯餐廳</h2>
+<button class='del' type="button" onclick="del(<?=$_GET['id']?>);"  >刪除餐廳</button>
 <?php
 if (!empty($_GET['error'])) {
-    echo "<span style='color:red'>已有相同餐廳</span>";
+    if($_GET['error']==1){
+    echo "<h3 style='color:red'>已有相同餐廳名稱</h3>";
+    }else{
+        echo "<h3 style='color:red'>有重複的菜單項目</h3>";
+    }
 }
+
 $restaurant=$pdo->query("select * from `restaurant` where `id`='{$_GET['id']}'")->fetch();
 $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id']}'")->fetchAll();
 ?>
@@ -96,7 +121,7 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
             <button type="button" id="delBtn" onclick="delImg('img_file','img',this)">刪除圖片</button>
         </div>
         <div>
-            <label for="name">餐廳名字</label>
+            <label for="name">餐廳名稱</label>
             <input type="text" name="name" id="name" value="<?=$restaurant['name']?>" required>
         </div>
         <div>
@@ -109,8 +134,7 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
         </div>
     </div>
     </div>
-    <hr>
-    <div class="restaurant mb-5">
+    <div class="restaurant mt-5 mb-5">
     <div class="mt-3">
         <img id="menu_img" src="<?php
             if(file_exists("./img/{$restaurant['menu_img']}")&&!empty($restaurant['menu_img'])){
@@ -138,8 +162,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
                 <th>操作</th>
             </tr>
             <tr>
-                <td><input type="text" name="menu[]" value="<?=$options[0]['name']?>" required></td>
-                <td><input type="number" name="dollar[]" class="dollar" min="0" value="<?=$options[0]['dollar']?>" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
+                <td><input type="text" name="menu[]" value="<?=$options[0]['name']??''?>" required></td>
+                <td><input type="number" name="dollar[]" class="dollar" min="0" value="<?=$options[0]['dollar']??''?>" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
                 <td>
                     <button type="button" onclick="addDiv()">+</button>
                 </td>
@@ -164,7 +188,8 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
         </table>
     </div>
     <div class="mt-3">
-        <button type="submit">新增</button>
+        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <button type="submit">編輯</button>
         <button type="button" onclick="location.href='./index.php'">取消</button>
     </div>
     <div id="space" data-img="<?php 
@@ -190,7 +215,7 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
     function addDiv() {
         let str = `<tr>
                 <td><input type="text" name="menu[]" required></td>
-                <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" required></td>
+                <td><input type="number" name="dollar[]" class="dollar" min="0" onkeyup="value=value.replace(/^(0+)|[^\\d]+/g,'')" required></td>
                 <td>
                     <button type="button" onclick="addDiv()">+</button>
                     <button type="button" onclick="delDiv(this)">-</button>
@@ -242,4 +267,11 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
         obj.style.display = "none";
     }
 
+    let name=document.getElementById("name").value;
+    function del(id){
+        if(confirm(`你確定要刪除以下餐廳?
+        ${name}`)){
+            location.href=`./api/del_restaurant.php?id=${id}`;
+        }
+    }
 </script>

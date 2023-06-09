@@ -20,41 +20,43 @@ if (!empty($_SESSION['buy'])) {
     <script src="./js/jquery-3.7.0.min.js"></script>
 
     <style>
-        .nav{
-            position:fixed;
-            top: 0;
-            left: 0;
-            height: 10vh;
-            z-index: 1;
-        }
 
         main {
             margin-top: 15vh;
         }
+
         body {
-        font-family: Tahoma, Verdana, Segoe, sans-serif;  
-        background: #f6fffd;
-        text-align: center;
+            font-family: Tahoma, Verdana, Segoe, sans-serif;
+            background: #f6fffd;
+            text-align: center;
+
+        }
         
-    }
+        .myflex{
+            display: flex;
+            justify-content: space-around;
+        }
         
+        .hei{
+            height: 10vh;
+        }
     </style>
 </head>
 
 <body>
     <?php
-        if($_SESSION['login']=='root'){
-            header("location:./backend.php");
-        }
+    if ($_SESSION['login'] == 'root') {
+        header("location:./backend.php");
+    }
     ?>
-    <nav class="navbar bg-info text-center fs-5 container-fluid nav">
+    <nav class="navbar bg-info text-center fs-5 fixed-top hei">
         <div class="container-fluid">
             <div class="offset-2 col-1">
                 <a class="nav-link text-white" href="./index.php">訂便當</a>
             </div>
             <div class="col-1"></div>
             <div class="offset-2 col-1"></div>
-            <div class="col-1">
+            <div class="col-4 myflex">
                 <?php
                 if (!empty($_SESSION['login'])) {
                     if ($_SESSION['pr'] == "super") {
@@ -62,28 +64,13 @@ if (!empty($_SESSION['buy'])) {
                     } else if ($_SESSION['pr'] == "teacher") {
                         echo "<a class='nav-link text-white' href='./backend.php'>班級管理系統</a>";
                     }
-                }
-                    ?>
-            </div>
-            <div class="col-1">
-                <?php
-                 if (!empty($_SESSION['login'])) {
-                 echo "<a class='nav-link text-white' href='?do=restaurant'>餐廳</a>";
-                 }
-                 ?>
-            </div>
-            <div class="col-1">
-            <?php 
-                if (!empty($_SESSION['login'])) {
-                 echo "<a class='nav-link text-white' href='?do=order'>今日點餐</a>";
-                }
-                ?>
-            </div>
-            <div class="col-1">
-                <?php
-                if (!empty($_SESSION['login'])) {
+
+                    echo "<a class='nav-link text-white' href='?do=restaurant'>餐廳</a>";
+
+                    echo "<a class='nav-link text-white' href='?do=order'>今日點餐</a>";
+
                     $name = $pdo->query("select `name` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
-                    
+
                     echo "<div class='nav-item dropdown'>";
                     echo "<a class='nav-link dropdown-toggle text-white' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                         {$name}
@@ -94,7 +81,7 @@ if (!empty($_SESSION['buy'])) {
                     echo "</ul>";
                     echo "</div>";
                 }
-                ?>
+                ?> 
             </div>
             <div class="col-1"></div>
         </div>

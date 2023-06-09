@@ -18,7 +18,7 @@
 <?php
 if (empty($_GET['id'])) {
 ?>
-    <h1>點餐紀錄</h1>
+    <h1 class="mb-3">點餐紀錄</h1>
     <div class="box">
     <div class="container">
 

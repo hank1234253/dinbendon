@@ -83,6 +83,7 @@
         border: 1px solid #ccc;
         border-radius: 1em;
         box-shadow: 0 0 8px #ccc;
+        padding: 30px;
     }
 </style>
 
@@ -92,7 +93,7 @@ $sql = "select * from `restaurant` where `id`='{$_GET['id']}'";
 $row = $pdo->query($sql)->fetch();
 ?>
 <div class="restaurant mb-5">
-    <h1>&nbsp;&nbsp;&nbsp;<?= $row['name'] ?>&nbsp;<a href="?do=edit_restaurant&id=<?=$row['id']?>"><img src="./img/edit.png" alt="" width="25"></a></h1>
+    <h1 class="mb-3">&nbsp;&nbsp;&nbsp;<?= $row['name'] ?>&nbsp;<a href="?do=edit_restaurant&id=<?=$row['id']?>"><img src="./img/edit.png" alt="" width="25"></a></h1>
     <p>餐廳地址：<?= $row['addr'] ?></p>
     <p>餐廳電話：<?= $row['tel'] ?></p>
 </div>
@@ -140,7 +141,6 @@ $row = $pdo->query($sql)->fetch();
 <div class="mt-3">
     <button type="button" onclick="openDiv()">點餐</button>
     <button type="button" onclick="location.href='?'">取消</button>
-    <button type="button" onclick="cancel()">取消訂餐</button>
 </div>
 
 
@@ -205,9 +205,5 @@ $row = $pdo->query($sql)->fetch();
     function closeDiv(){
         check.style.display = "none";
     }
-    function cancel(){
-        if(confirm("你確定要取消今日訂餐?")){
-            location.href="./api/cancel.php";
-        }
-    }
+    
 </script>

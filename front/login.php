@@ -1,12 +1,15 @@
 <style>
+    .circle{
+        border-radius: 1em;
+    }
     .face {
         margin: 0 auto;
-        width: 350px;
+        width: 400px;
         height: 450px;
-        padding: 20px;
+        padding: 40px;
         background: rgba(250, 250, 250, 0.96);
         border: 3px solid #07ad90;
-        border-radius: 3px;
+        border-radius: 1em;
     }
 
     .face .content {
@@ -108,7 +111,7 @@
 </style>
 
 
-<div class="face">
+<div class="face ">
     <div class="content">
         <h2>Sign in</h2>
         <form action="./api/login.php" method="post">

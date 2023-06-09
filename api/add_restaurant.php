@@ -1,5 +1,10 @@
 <?php
     include_once "../db.php";
+    $menu_unique = array_unique($_POST['menu']);
+if ( count($_POST['menu']) != count($menu_unique) ){
+    header("location:../index.php?do=add_restaurant&error=2");
+    exit();
+}
     $check=$pdo->query("select count(*) from `restaurant` where `name`='{$_POST['name']}'")->fetchColumn();
     if($check==0){
     $imgFile='';
