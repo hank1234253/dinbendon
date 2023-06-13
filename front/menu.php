@@ -102,22 +102,23 @@
     .top{
             display: block;
             background-color: skyblue;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
+            width: 12vh;
+            height: 12vh;
+            line-height: 12vh;
             position: fixed;
-            top:86vh;
+            top:85vh;
             right: 3vw;
-            border-radius: 50px;
+            border-radius: 12vh;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
             color:#0d6efd;
+            font-size: 18px;
     }
     button{
         border: 0;
     }
     .top:hover{
-        top:84vh
+        top:83vh
     }
     .cancel{
         color:white;
@@ -164,7 +165,7 @@ if(!empty($log)){
         </tr>
 
         <?php
-        $sql = "select * from `options` where `restaurant_id`='{$_GET['id']}'";
+        $sql = "select * from `options` where `restaurant_id`='{$_GET['id']}' order by `name`";
         $options = $pdo->query($sql)->fetchAll();
         foreach ($options as $opt) {
         ?>

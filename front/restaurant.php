@@ -2,6 +2,7 @@
     img {
         width: 80%;
         height: 85%;
+        max-height: 250px;
         border-radius: 0.5em;
         box-shadow: 0 0 5px #ccc;
         margin: 0 auto;
@@ -23,40 +24,48 @@
             height: 35vh;
             box-shadow: 0 0 5px #ccc;
         }
+    .card-body{
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .new{
             display: block;
             background-color: skyblue;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
+            width: 12vh;
+            height: 12vh;
+            line-height: 12vh;
             position: fixed;
-            top:73vh;
+            top:71vh;
             right: 3vw;
-            border-radius: 50px;
+            border-radius: 12vh;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
             color: #0d6efd;
+            font-size: 18px;
     }
     .new:hover{
-        top:71vh;
+        top:69vh;
     }
     .top{
             display: block;
             background-color: skyblue;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
+            width: 12vh;
+            height: 12vh;
+            line-height: 12vh;
             position: fixed;
-            top:86vh;
+            top:85vh;
             right: 3vw;
-            border-radius: 50px;
+            border-radius: 12vh;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
             color:#0d6efd;
+            font-size: 18px;
     }
     
     .top:hover{
-        top:84vh
+        top:83vh
     }
     button{
         border: 0;

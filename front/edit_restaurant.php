@@ -7,7 +7,9 @@
     img {
         max-width: 500px;
     }
-
+    input[type="text"]{
+        width: 700px;
+    }
     #delBtn,
     #delBtn2 {
         display: none;
@@ -72,20 +74,21 @@
     .del{
             display: block;
             background-color: #dc3545;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
+            width: 12vh;
+            height: 12vh;
+            line-height: 12vh;
             position: fixed;
-            top:86vh;
+            top:85vh;
             right: 3vw;
-            border-radius: 50px;
+            border-radius: 12vh;
             box-shadow: 0 0 10px #ccc;
             transition: 0.2s;
             color:white;
             border: 0;
+            font-size: 18px;
     }
     .del:hover{
-        top:84vh;
+        top:83vh;
     }
     
 </style>
@@ -127,7 +130,7 @@ $options=$pdo->query("select * from `options` where `restaurant_id`='{$_GET['id'
         </div>
         <div>
             <label for="tel">餐廳電話</label>
-            <input type="text" name="tel" id="tel" value="<?=$restaurant['tel']?>" onkeyup="value=value.replace(/[^\d]+/g,'')" required>
+            <input type="text" name="tel" id="tel" value="<?=$restaurant['tel']?>"  required>
         </div>
         <div>
             <label for="addr">餐廳地址</label>

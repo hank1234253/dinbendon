@@ -8,6 +8,9 @@
         max-width: 500px;
     }
 
+    input[type="text"]{
+        width: 700px;
+    }
     #delBtn,
     #delBtn2 {
         display: none;
@@ -98,7 +101,7 @@ if (!empty($_GET['error'])) {
         </div>
         <div>
             <label for="tel">餐廳電話</label>
-            <input type="text" name="tel" id="tel" onkeyup="value=value.replace(/[^\d]+/g,'')" required>
+            <input type="text" name="tel" id="tel" required>
         </div>
         <div>
             <label for="addr">餐廳地址</label>

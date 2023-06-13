@@ -40,12 +40,8 @@ if($id==$_POST['id']||empty($id)){
             $sql="delete from `options` where `id`='{$value['id']}'";
             $pdo->exec($sql);
             unset($options[$idx]);
-            echo $sql."<br>";
         }
     }
-
-    dd($_POST['menu']);
-    dd($options);
     //更新
     foreach($options as  $value){ 
         if(in_array($value['name'],$_POST['menu'])){
@@ -54,21 +50,20 @@ if($id==$_POST['id']||empty($id)){
         $pdo->exec($sql);
         unset($_POST['menu'][$idx]);
         unset($_POST['dollar'][$idx]);
-        echo $sql."<br>";
     }
     }
-    dd($_POST['menu']);
+
 
     //新增
     foreach($_POST['menu'] as $idx => $value){
         $sql="INSERT INTO `options`(`name`, `dollar`, `restaurant_id`) VALUES ('{$value}','{$_POST['dollar'][$idx]}','{$_POST['id']}')";
         $pdo->exec($sql);
-        echo $sql."<br>";
     }
+header("location:../index.php");
+
 }
 else{
     header("location:../index.php?do=edit_restaurant&id={$_POST['id']}&error=1");
     exit();
 }
-header("location:../index.php");
 ?>

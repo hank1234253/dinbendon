@@ -39,4 +39,4 @@ if ($_POST['pr'] == 'student') {
 echo $num;
 $sql = "insert into `members` (`name`,`acc`,`pw`,`class`,`num`,`pr`) values ('{$_POST['name']}','{$_POST['acc']}','{$_POST['pw']}','{$_POST['class']}','{$num}','{$_POST['pr']}')";
 $pdo->exec($sql);
-header("location:../backend.php");
+// header("location:../backend.php");
