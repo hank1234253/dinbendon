@@ -29,7 +29,7 @@
 |class|int(11)|X||X|班級|
 |num|int(11)|X||X|座號|
 |pr|varchar(10)|X|student|X|權限|
-## 資料表二 餐廳(restaurants)
+## 資料表二 餐廳(restaurant)
 |欄位名|資料型態|主鍵|預設值|自動遞增|備註|
 | --- | --- | --- | --- | --- | --- |
 |id|int(11)|V||V|id|
