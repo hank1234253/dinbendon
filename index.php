@@ -1,7 +1,8 @@
 <?php
 include_once "./db.php";
 if (!empty($_SESSION['buy'])) {
-    echo "<script>alert('點餐成功')</script>";
+    
+    echo ($_SESSION['buy']=="ok")?"<script>alert('點餐成功')</script>":"<script>alert('點餐失敗，今日已選其他餐廳請重新點餐')</script>";
     unset($_SESSION['buy']);
 }
 if (!empty($_SESSION['cancel'])) {
