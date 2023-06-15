@@ -216,8 +216,9 @@ if (!empty($logs)) {
                     $(".menu").append(html);
                 }
                 hover();
-                getPay();
+                
                 }
+                getPay();
             }
         })
         
@@ -279,10 +280,7 @@ if (!empty($logs)) {
         
         for(let i=0;i<paid.length;i++){
             let tmp=Number(number.item(i).value)-Number(paid.item(i).innerText);
-            if(tmp>=0){
-                cash.item(i).innerText=tmp;
-                
-                $.ajax({
+            $.ajax({
                     url:"./api/update_log.php",
                     type:'post',
                     data:{id:paid.item(i).getAttribute("data-id"),pay:number.item(i).value},
@@ -291,6 +289,8 @@ if (!empty($logs)) {
                     }
                 }
                 )
+            if(tmp>=0){
+                cash.item(i).innerText=tmp;
             }else{
                 cash.item(i).innerText="尚未繳錢";
             }

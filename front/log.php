@@ -97,8 +97,7 @@ if (empty($_GET['id'])) {
                     ?>
                 </div>
                 <div class="col-1"></div>
-                <div class="col-1"><?= $log["restaurant"] ?></div>
-                <div class="col-3"></div>
+                <div class="col-4"><?= $log["restaurant"] ?></div>
             </div>
         </a>
         <?php
@@ -174,7 +173,7 @@ if (empty($_GET['id'])) {
     }
     ?>
 </table>
-<button type="button" onclick="location.href='?do=log'">回前頁</button>
+<button type="button" class="btn btn-secondary" onclick="location.href='?do=log'">回前頁</button>
 <?php
 }
 ?>
