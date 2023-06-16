@@ -158,7 +158,7 @@ if (!empty($logs)) {
     let pay=document.getElementById("pay");
     let checkOrder="";
     getDate();
-    getPay();
+    setTimeout(getPay,100)
     setInterval(getDate, 5000);
 
 
@@ -212,13 +212,19 @@ if (!empty($logs)) {
                         
                     }
                     html =html+`</td>
-                            </tr>`;
+                            </tr>
+                            `;
                     $(".menu").append(html);
                 }
+                html=`<tr>
+                            <td colspan="4" id="sum" class="text-center">
+                            </td>
+                      </tr>`;
+                $(".menu").append(html);
                 hover();
                 
                 }
-                getPay();
+                setTimeout(getPay,100);
             }
         })
         
@@ -240,6 +246,8 @@ if (!empty($logs)) {
     
     let checkPay="";
     function getPay(){
+        
+        let sum=0;
         $.ajax({
             url: "./api/pay.php",
             method: "post",
@@ -257,6 +265,7 @@ if (!empty($logs)) {
                          </tr>`;
                 pay.innerHTML=html;
                 for(let i=0;i<require.length;i++){
+                    sum+=require[i].sum;
                     html=`<tr>
                             <td>${require[i].id}</td>
                             <td>${require[i].name}</td>
@@ -267,6 +276,7 @@ if (!empty($logs)) {
                           </tr>`
                     $("#pay").append(html);
                 }
+                total(sum);
                 setTimeout(_count,100);
                 }
             }
@@ -294,7 +304,12 @@ if (!empty($logs)) {
             }else{
                 cash.item(i).innerText="尚未繳錢";
             }
-        }
+        } 
     }
+
+    function total(num){
+            let sumtd=document.getElementById("sum");
+            sumtd.innerText="總計"+num+"元";
+        }
 </script>
 
