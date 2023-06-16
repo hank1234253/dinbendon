@@ -1,6 +1,6 @@
 <?php
 include_once "../db.php";
-$lastday = date("Y-n-d", strtotime("-1 day", strtotime("now")));
+$lastday = date("Y-n-d", strtotime("now"));
 $nextday = date("Y-n-d", strtotime("+1 day", strtotime("now")));
 $class=$pdo->query("select `class` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
 $sql = "select * from `logs` where `create_time`>'{$lastday}'&&`create_time`<'{$nextday}'&&`class`='{$class}'";

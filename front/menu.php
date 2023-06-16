@@ -127,7 +127,7 @@
 </style>
 
 <?php
-$lastday = date("Y-n-d", strtotime("-1 day", strtotime("now")));
+$lastday = date("Y-n-d",strtotime("now"));
 $nextday = date("Y-n-d", strtotime("+1 day", strtotime("now")));
 $sql = "select * from `restaurant` where `id`='{$_GET['id']}'";
 $row = $pdo->query($sql)->fetch();
